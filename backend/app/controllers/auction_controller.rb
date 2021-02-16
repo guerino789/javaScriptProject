@@ -1,0 +1,3 @@
+class AuctionController < ApplicationController
+    
+end
