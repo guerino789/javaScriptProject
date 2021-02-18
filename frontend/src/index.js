@@ -1,3 +1,4 @@
-document.addEventListener("DOMContentLoaded", function(){
-    console.log('butthead')
-})
+document.addEventListener("DOMContentLoaded", () => {
+    getComputers();
+    Computer.newComputerForm()
+});
