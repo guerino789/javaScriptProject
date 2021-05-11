@@ -1,4 +1,4 @@
-class ComputerController < ApplicationController
+class ComputersController < ApplicationController
 
     def index 
         computers = Computer.all.order('name ASC')

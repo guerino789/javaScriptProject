@@ -1,4 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-    getComputers();
-    Computer.newComputerForm()
+    // getComputers();
+    // Computer.newComputerForm()
 });
