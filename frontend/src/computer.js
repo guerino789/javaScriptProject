@@ -1,11 +1,21 @@
 
 
 let newComputerForm = document.getElementById("new-computer-form")
+let computersList = document.getElementById("computer-list")
+let btn = document.createElement("button")
+
 
 newComputerForm.addEventListener("submit", function(event){
     event.preventDefault()
     createNewComputer(event.target)
 })
+
+computersList.addEventListener("button", function(event){
+    event.preventDefault()
+    renderComputer(event.target)
+})
+
+
 
 function createNewComputer(computer_info){
     fetch("http://localhost:3000/computers", {
@@ -20,7 +30,7 @@ function createNewComputer(computer_info){
         })
     })
     .then(resp => resp.json())
-    .then(resp => fetchComputers(resp))
+    .then(resp => renderComputer(resp))
 
 }
 
@@ -34,13 +44,15 @@ function fetchComputers(){
 fetchComputers();
 
 function renderComputers(computers){
-    const form = document.getElementById('computer-list')
-    computers.forEach(element => {
-        const h2 = document.createElement('h2')
-        h2.innerHTML = element.name
-        form.appendChild(h2);
-        
-    });
+    computers.forEach(element => renderComputer(element));
 }
+
+function renderComputer(computer){
+    const computerList = document.getElementById('computer-list')
+    const h2 = document.createElement('h2')
+        h2.innerHTML = computer.name
+        computerList.appendChild(h2);
+}
+
 
 

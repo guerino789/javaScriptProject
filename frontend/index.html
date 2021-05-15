@@ -20,24 +20,22 @@
 
     <div class="container" id="computer-list">
 
-
+      
         
     </div>
 
     <form id="parts-list-form">
-
-        <label><strong>Item: </strong></label><br/>
-        <input type="text" id="item" required><br/>
-        <input type="hidden" id="part-computerId" value="${computerId}">
-        <label><strong>Brand: </strong></label><br/>
-        <input type="text" id="brand" required><br/>
-        <input type="hidden" id="part-computerId" value="${computerId}">
-        <label><strong>model: </strong></label><br/>
-        <input type="text" id="model" required><br/>
-        <input type="hidden" id="part-computerId" value="${computerId}">
-        <label><strong>Price:   </strong></label><br/>
-        <input type="number" id="part-computerId" required><br/>  
-        <input type="submit" value="Submit">
+        <input type="text" name="item" placeholder="Item">
+        <br/>
+        <input type="text" name="brand" placeholder="Brand">
+        <br/>
+        <input type="text" name="model" placeholder="Model">
+        <br/>
+        <input type="number" name="price" placeholder="Price">
+        <br/>
+        <input type="hidden" id="categoryId" value="${computerId}">
+        <input type="submit">
+     
     
     </form>
 
@@ -46,6 +44,8 @@
 
     
 </body> 
-    <script src="src/index.js"></script>
-    <script src= "src/computer.js"></script>
+    
+    <script src ="src/index.js"></script>
+    <script src = "src/computer.js"></script>
+    <script src = "src/part.js"></script>
 </html>

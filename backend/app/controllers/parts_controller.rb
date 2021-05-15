@@ -12,7 +12,11 @@ class PartsController < ApplicationController
 
     def create 
         part = Part.create(part_params)
-        render json: part
+            if part.valid?
+                render json: part
+            else
+                render json: { errors: part.errors.full_messages }, status: :unprocessible_entity
+            end
     end
 
     def update 

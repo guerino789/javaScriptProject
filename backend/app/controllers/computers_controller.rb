@@ -2,7 +2,7 @@ class ComputersController < ApplicationController
 
     def index 
         computers = Computer.all.order('name ASC')
-        render json: computers
+        render json: computers, include: :parts
     end
 
     def show 
