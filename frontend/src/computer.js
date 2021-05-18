@@ -2,7 +2,7 @@
 
 let newComputerForm = document.getElementById("new-computer-form")
 let computersList = document.getElementById("computer-list")
-let btn = document.createElement("button")
+
 
 
 newComputerForm.addEventListener("submit", function(event){
@@ -10,10 +10,7 @@ newComputerForm.addEventListener("submit", function(event){
     createNewComputer(event.target)
 })
 
-computersList.addEventListener("button", function(event){
-    event.preventDefault()
-    renderComputer(event.target)
-})
+
 
 
 
@@ -31,7 +28,8 @@ function createNewComputer(computer_info){
     })
     .then(resp => resp.json())
     .then(resp => renderComputer(resp))
-
+    
+    
 }
 
 function fetchComputers(){
@@ -48,10 +46,26 @@ function renderComputers(computers){
 }
 
 function renderComputer(computer){
-    const computerList = document.getElementById('computer-list')
-    const h2 = document.createElement('h2')
-        h2.innerHTML = computer.name
-        computerList.appendChild(h2);
+    const computerList = document.getElementById('computers')
+    const setDropDown = document.createElement('option')
+    setDropDown.setAttribute('value', computer.id)
+    setDropDown.innerHTML = computer.name
+    computerList.appendChild(setDropDown)
+    computerList.onchange = function(){
+                document.getElementById("computerId").value = computerList.value
+                clearPartsHtml()
+                fetchComputer(computerList.value)
+            }
+
+
+}
+
+
+function fetchComputer(computerId){
+    fetch(`http://localhost:3000/computers/${computerId}`)
+    .then(resp => resp.json())
+    .then(json => renderParts(json.parts))
+
 }
 
 

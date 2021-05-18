@@ -20,11 +20,12 @@ class PartsController < ApplicationController
     end
 
     def update 
-        part.update(part_params)
-        if part.save
-            render json: part
-        else 
-            render json: { errors: part.errors.full_messages }, status: :unprocessible_entity
+        part = Part.find_by(id: params[:id])
+        if part
+             part.update(part_params)
+             render json: {part: part} 
+            else
+                render json: {error: "Part can not be edited."}
         end
     end
 

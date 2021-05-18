@@ -2,12 +2,12 @@ class ComputersController < ApplicationController
 
     def index 
         computers = Computer.all.order('name ASC')
-        render json: computers, include: :parts
+        render json: computers 
     end
 
     def show 
         computer = Computer.find(params[:id])
-        render json: computer
+        render json: computer, include: :parts
     end
 
     def create 
