@@ -1,6 +1,6 @@
-
-
 let newPartForm = document.getElementById("parts-list-form")
+let rIndex, table = document.getElementById("parts-list")
+let tr = document.getElementById("tr")
 
 
 newPartForm.addEventListener("submit", function(event){
@@ -41,33 +41,28 @@ function createNewPart(part_info){
 function renderParts(parts){
     parts.forEach(element => {
         renderPart(element)
+        selectedRowToInput();
         // createButtonElement(element)
     });
     
 }
 
 function renderPart(part){
-    const partsList = document.getElementById('parts-list')
-    const tr = document.createElement('tr')
-    const btn = document.createElement('button')
-    const itemTd = document.createElement('td')
-    const brandTd = document.createElement('td')
-    const modelTd = document.createElement('td')
-    const priceTd = document.createElement('td')
+    const partsList = document.getElementById("parts-list")
+    const newRow = partsList.insertRow(partsList.length)
+    const itemCell = newRow.insertCell(0)
+    const brandCell = newRow.insertCell(1)
+    const modelCell = newRow.insertCell(2)
+    const priceCell = newRow.insertCell(3)
 
-    itemTd.innerHTML = part.item
-    brandTd.innerHTML = part.brand
-    modelTd.innerHTML = part.model
-    priceTd.innerHTML = part.price
+    itemCell.innerHTML = part.item
+    brandCell.innerHTML = part.brand
+    modelCell.innerHTML = part.model
+    priceCell.innerHTML = part.price
 
-    tr.appendChild(itemTd)
-    tr.appendChild(brandTd)
-    tr.appendChild(modelTd)
-    tr.appendChild(priceTd)
 
-    partsList.appendChild(tr)
+    
 
-    selectedRowToInput();
 
     
 }
@@ -79,20 +74,23 @@ function clearPartsHtml() {
 
 function selectedRowToInput()
             {
-                let rowIndex,table = document.getElementById('parts-list')
-                for(var i = 0; i < table.rows.lenght; i++)
+                
+                for(var i = 1; i < table.rows.length; i++)
                 {
-                    table.rows[i].onclick = function(){
-                      rIndex = this.rowIndex;  
-                      document.getElementById("item").value = this.itemTd[0].innerHTML;
-                      document.getElementById("brand").value = this.brandTd[1].innerHTML;
-                      document.getElementById("model").value = this.modelTd[2].innerHTML;
-                      document.getElementById("price").value = this.priceTd[3].innerHTML;
-                      
-                    }
+                    table.rows[i].onclick = function()
+                    {
+                      // get the seected row index
+                      rIndex = this.rowIndex;
+                      document.getElementById("item").value = this.cells[0].innerHTML;
+                      document.getElementById("brand").value = this.cells[1].innerHTML;
+                      document.getElementById("model").value = this.cells[2].innerHTML;
+                      document.getElementById("price").value = this.cells[3].innerHTML;
+                    };
                 }
             }
             selectedRowToInput();
+
+
 
 // function createButtonElement() {
 //   var a = document.querySelectorAll('tr');
