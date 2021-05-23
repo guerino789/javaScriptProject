@@ -1,3 +1,4 @@
+let baseUrl = 'http://localhost3000/parts';
 let newPartForm = document.getElementById("parts-list-form")
 let rIndex, table = document.getElementById("parts-list")
 let tr = document.getElementById("tr")
@@ -16,7 +17,7 @@ function createNewPart(part_info){
  
 
 
-    fetch("http://localhost:3000/parts", {
+    fetch("http://localhost:3000/parts" , {
         method: "POST",
         headers: {
             'Accept': 'application/json',
@@ -38,11 +39,24 @@ function createNewPart(part_info){
 
 }
 
+function updateParts(part){
+    fetch(`http://localhost:3000/parts/${part.id}`, {
+        method: "PATCH",
+        headers: {
+            "content-type": "application/json",
+             accepts: "application/json"
+     },
+     body: JSON.stringify({part: part})
+    })
+    .then(resp => resp.json())
+    .then(resp => editHtmlTbleSelectedRow(resp))
+}
+
 function renderParts(parts){
     parts.forEach(element => {
         renderPart(element)
-        selectedRowToInput();
-        // createButtonElement(element)
+        selectedRowToInput()
+        
     });
     
 }
@@ -79,7 +93,7 @@ function selectedRowToInput()
                 {
                     table.rows[i].onclick = function()
                     {
-                      // get the seected row index
+                     
                       rIndex = this.rowIndex;
                       document.getElementById("item").value = this.cells[0].innerHTML;
                       document.getElementById("brand").value = this.cells[1].innerHTML;
@@ -90,15 +104,46 @@ function selectedRowToInput()
             }
             selectedRowToInput();
 
+    function editHtmlTbleSelectedRow()
+        {
+         var item = document.getElementById("item").value,
+             brand = document.getElementById("brand").value,
+             model = document.getElementById("model").value,
+             price = document.getElementById("price").value;
+            
+            table.rows[rIndex].cells[0].innerHTML = item;
+            table.rows[rIndex].cells[1].innerHTML = brand;
+            table.rows[rIndex].cells[2].innerHTML = model;
+            table.rows[rIndex].cells[3].innerHTML = price;
+            
+        }   
+            
+            // function checkEmptyInput()
+            // {
+            //     var isEmpty = false,
+            //         item = document.getElementById("item").value,
+            //         brand = document.getElementById("brand").value,
+            //         model = document.getElementById("model").value,
+            //         price = document.getElementById("price").value;
+            
+            //     if(item === ""){
+            //         alert("Item Can not Be Empty");
+            //         isEmpty = true;
+            //     }
+            //     else if(brand === ""){
+            //         alert("Brand Can not Be Empty");
+            //         isEmpty = true;
+            //     }
+            //     else if(model === ""){
+            //         alert("Model Can not Be Empty");
+            //         isEmpty = true;
+            //     }
+            //     else if(price === ""){
+            //         alert("Price can not be empty");
+            //         isEmpty = true;
+            //     }
+            //     return isEmpty;
+            // }
 
 
-// function createButtonElement() {
-//   var a = document.querySelectorAll('tr');
 
-//   for (var v = 0; v < a.length; v++) {
-//     var btn = document.createElement("button");
-
-//     btn.appendChild(document.createTextNode("Delete Me"));
-//     a[v].appendChild(btn);
-//   }
-// }
