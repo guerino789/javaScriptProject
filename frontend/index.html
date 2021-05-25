@@ -25,21 +25,26 @@
 
     <div class="container" id="computer-details">
 
-        <table id="parts-list" border="1">
-            <tr>
-                <th>
-                    item
-                </th>
-                <th>
-                    Brand
-                </th>
-                <th>
-                    Model
-                </th>
-                <th>
-                    Price
-                </th>
-            </tr>
+        <table  id="parts-list" border="1">
+            <thead>
+                <tr class="font-monospace">
+                    <th>
+                        item
+                    </th>
+                    <th>
+                        Brand
+                    </th>
+                    <th>
+                        Model
+                    </th>
+                    <th>
+                        Price
+                    </th>
+                    <th>
+                        Id
+                    </th>
+                </tr>
+            </thead>
             <tbody>
               
 
@@ -56,9 +61,10 @@
             <input type="number" name="price" id="price" placeholder="Price">
             <br/>
             <input type="hidden" id="computerId" >
-            <input type="submit"> 
-            <button onclick="editHtmlTbleSelectedRow();">Edit</button>
-            <button onclick="removeSelectedRow();">Remove</button>
+            <input type="hidden" id="partId">
+            <button onclick="addPart();">Add</button> 
+            <button onclick="updatePart();">Update</button>
+            <button onclick="deletePart();">Delete</button>
             
         </form> 
       

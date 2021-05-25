@@ -1,20 +1,37 @@
-let baseUrl = 'http://localhost3000/parts';
+
 let newPartForm = document.getElementById("parts-list-form")
 let rIndex, table = document.getElementById("parts-list")
 let tr = document.getElementById("tr")
 
+class Part {
+    constructor(data) {
+        this.id = data.id
+        this.item = data.item
+        this.brand = data.brand
+        this.model = data.price
+        this.computer_id = data.computer_id
+    }
+}
+
 
 newPartForm.addEventListener("submit", function(event){
     event.preventDefault()
-    createNewPart(event.target)
+    document.getElementById("item").value = ""
+    document.getElementById("brand").value = ""
+    document.getElementById("model").value = ""
+    document.getElementById("price").value = ""
 })
 
 
 
 
 
-function createNewPart(part_info){
- 
+function addPart(){
+    let item = document.getElementById("item").value,
+        brand = document.getElementById("brand").value,
+        model = document.getElementById("model").value,
+        price = document.getElementById("price").value,
+        computer_id = document.getElementById("computerId").value;
 
 
     fetch("http://localhost:3000/parts" , {
@@ -25,11 +42,11 @@ function createNewPart(part_info){
           },
           body: JSON.stringify({
             part: {
-                item: part_info[0].value,
-                brand: part_info[1].value,
-                model: part_info[2].value,
-                price: part_info[3].value,
-                computer_id: part_info[4].value
+                 item,
+                 brand,
+                 model,
+                 price,
+                 computer_id
 
             }
         })
@@ -61,19 +78,30 @@ function renderParts(parts){
     
 }
 
+function deletePart(){
+    partId = document.getElementById("partId").value;
+    fetch(`http://localhost:3000/parts/${partId}`, {
+        method: "DELETE",
+    })
+    table.rows[rIndex].remove()
+
+}
+
+
 function renderPart(part){
-    const partsList = document.getElementById("parts-list")
+    const partsList = document.querySelector("#parts-list>tbody")
     const newRow = partsList.insertRow(partsList.length)
     const itemCell = newRow.insertCell(0)
     const brandCell = newRow.insertCell(1)
     const modelCell = newRow.insertCell(2)
     const priceCell = newRow.insertCell(3)
+    const idCell = newRow.insertCell(4)
 
     itemCell.innerHTML = part.item
     brandCell.innerHTML = part.brand
     modelCell.innerHTML = part.model
     priceCell.innerHTML = part.price
-
+    idCell.innerHTML = part.id
 
     
 
@@ -82,9 +110,10 @@ function renderPart(part){
 }
 
 function clearPartsHtml() {
-    let partsIndex = document.getElementById("parts-list")
+    let partsIndex = document.querySelector("#parts-list>tbody")
+    console.log(partsIndex)
     partsIndex.innerHTML = ''
-}
+ }
 
 function selectedRowToInput()
             {
@@ -95,28 +124,50 @@ function selectedRowToInput()
                     {
                      
                       rIndex = this.rowIndex;
+                      console.log(rIndex)
                       document.getElementById("item").value = this.cells[0].innerHTML;
                       document.getElementById("brand").value = this.cells[1].innerHTML;
                       document.getElementById("model").value = this.cells[2].innerHTML;
                       document.getElementById("price").value = this.cells[3].innerHTML;
+                      document.getElementById("partId").value = this.cells[4].innerHTML;
                     };
                 }
             }
             selectedRowToInput();
 
-    function editHtmlTbleSelectedRow()
+    function updatePart()
         {
          var item = document.getElementById("item").value,
              brand = document.getElementById("brand").value,
              model = document.getElementById("model").value,
-             price = document.getElementById("price").value;
+             price = document.getElementById("price").value,
+             partId = document.getElementById("partId").value;
             
             table.rows[rIndex].cells[0].innerHTML = item;
             table.rows[rIndex].cells[1].innerHTML = brand;
             table.rows[rIndex].cells[2].innerHTML = model;
             table.rows[rIndex].cells[3].innerHTML = price;
+
+            fetch(`http://localhost:3000/parts/${partId}`, {
+        method: "PATCH",
+        headers: {
+            "content-type": "application/json",
+             accepts: "application/json"
+     },
+     body: JSON.stringify({part: {
+         item,
+         brand,
+         model,
+         price
+     }
+        })
+    })
+
+
+}
+
             
-        }   
+        
             
             // function checkEmptyInput()
             // {
