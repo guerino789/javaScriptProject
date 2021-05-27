@@ -8,7 +8,8 @@ class Part {
         this.id = data.id
         this.item = data.item
         this.brand = data.brand
-        this.model = data.price
+        this.model = data.model
+        this.price = data.price
         this.computer_id = data.computer_id
     }
 }
@@ -32,7 +33,14 @@ function addPart(){
         model = document.getElementById("model").value,
         price = document.getElementById("price").value,
         computer_id = document.getElementById("computerId").value;
+    let part = new Part( {
+        item,
+        brand,
+        model,
+        price,
+        computer_id
 
+   })
 
     fetch("http://localhost:3000/parts" , {
         method: "POST",
@@ -41,14 +49,7 @@ function addPart(){
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
-            part: {
-                 item,
-                 brand,
-                 model,
-                 price,
-                 computer_id
-
-            }
+            part
         })
     })
     .then(resp => resp.json())
@@ -142,6 +143,12 @@ function selectedRowToInput()
              model = document.getElementById("model").value,
              price = document.getElementById("price").value,
              partId = document.getElementById("partId").value;
+        let part = new Part( {
+            item,
+            brand,
+            model,
+            price
+        })
             
             table.rows[rIndex].cells[0].innerHTML = item;
             table.rows[rIndex].cells[1].innerHTML = brand;
@@ -154,12 +161,7 @@ function selectedRowToInput()
             "content-type": "application/json",
              accepts: "application/json"
      },
-     body: JSON.stringify({part: {
-         item,
-         brand,
-         model,
-         price
-     }
+     body: JSON.stringify({part
         })
     })
 

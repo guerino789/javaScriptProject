@@ -59,7 +59,7 @@ function renderComputer(computer){
 
 
 }
-
+l
 
 function fetchComputer(computerId){
     fetch(`http://localhost:3000/computers/${computerId}`)

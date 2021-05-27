@@ -11265,3 +11265,728 @@ Processing by ComputersController#show as HTML
 Completed 200 OK in 3ms (Views: 1.9ms | ActiveRecord: 0.5ms | Allocations: 1807)
 
 
+Started GET "/computers" for ::1 at 2021-05-25 19:04:37 -0400
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ComputersController#index as */*
+  [1m[36mComputer Load (0.4ms)[0m  [1m[34mSELECT "computers".* FROM "computers" ORDER BY name ASC[0m
+  ↳ app/controllers/computers_controller.rb:5:in `index'
+Completed 200 OK in 4ms (Views: 2.8ms | ActiveRecord: 0.4ms | Allocations: 2707)
+
+
+Started POST "/computers" for ::1 at 2021-05-25 19:05:24 -0400
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ComputersController#create as */*
+  Parameters: {"computer"=>{"name"=>"tonys computer"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/computers_controller.rb:14:in `create'
+  [1m[36mComputer Create (1.3ms)[0m  [1m[32mINSERT INTO "computers" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "tonys computer"], ["created_at", "2021-05-25 23:05:24.398448"], ["updated_at", "2021-05-25 23:05:24.398448"]]
+  ↳ app/controllers/computers_controller.rb:14:in `create'
+  [1m[35m (5.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/computers_controller.rb:14:in `create'
+Completed 200 OK in 30ms (Views: 0.4ms | ActiveRecord: 8.4ms | Allocations: 6751)
+
+
+Started GET "/computers/16" for ::1 at 2021-05-25 19:05:27 -0400
+Processing by ComputersController#show as */*
+  Parameters: {"id"=>"16"}
+  [1m[36mComputer Load (0.3ms)[0m  [1m[34mSELECT "computers".* FROM "computers" WHERE "computers"."id" = ? LIMIT ?[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/controllers/computers_controller.rb:9:in `show'
+  [1m[36mPart Load (0.2ms)[0m  [1m[34mSELECT "parts".* FROM "parts" WHERE "parts"."computer_id" = ?[0m  [["computer_id", 16]]
+  ↳ app/controllers/computers_controller.rb:10:in `show'
+Completed 200 OK in 15ms (Views: 11.6ms | ActiveRecord: 1.0ms | Allocations: 4889)
+
+
+Started POST "/parts" for ::1 at 2021-05-25 19:05:45 -0400
+Processing by PartsController#create as JSON
+  Parameters: {"part"=>{"item"=>"test1", "brand"=>"test1", "model"=>"test1", "price"=>"", "computer_id"=>"16"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/parts_controller.rb:14:in `create'
+  [1m[36mComputer Load (0.3ms)[0m  [1m[34mSELECT "computers".* FROM "computers" WHERE "computers"."id" = ? LIMIT ?[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/controllers/parts_controller.rb:14:in `create'
+  [1m[36mPart Create (1.1ms)[0m  [1m[32mINSERT INTO "parts" ("item", "brand", "model", "computer_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["item", "test1"], ["brand", "test1"], ["model", "test1"], ["computer_id", 16], ["created_at", "2021-05-25 23:05:45.579187"], ["updated_at", "2021-05-25 23:05:45.579187"]]
+  ↳ app/controllers/parts_controller.rb:14:in `create'
+  [1m[35m (5.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/parts_controller.rb:14:in `create'
+Completed 200 OK in 25ms (Views: 0.4ms | ActiveRecord: 7.9ms | Allocations: 10288)
+
+
+Started POST "/parts" for ::1 at 2021-05-25 19:06:02 -0400
+Processing by PartsController#create as JSON
+  Parameters: {"part"=>{"item"=>"fdfd", "brand"=>"", "model"=>"", "price"=>"", "computer_id"=>"16"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/parts_controller.rb:14:in `create'
+  [1m[36mComputer Load (0.5ms)[0m  [1m[34mSELECT "computers".* FROM "computers" WHERE "computers"."id" = ? LIMIT ?[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/controllers/parts_controller.rb:14:in `create'
+  [1m[36mPart Create (1.0ms)[0m  [1m[32mINSERT INTO "parts" ("item", "brand", "model", "computer_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["item", "fdfd"], ["brand", ""], ["model", ""], ["computer_id", 16], ["created_at", "2021-05-25 23:06:02.676499"], ["updated_at", "2021-05-25 23:06:02.676499"]]
+  ↳ app/controllers/parts_controller.rb:14:in `create'
+  [1m[35m (6.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/parts_controller.rb:14:in `create'
+Completed 200 OK in 15ms (Views: 0.4ms | ActiveRecord: 7.7ms | Allocations: 4746)
+
+
+Started GET "/computers" for ::1 at 2021-05-25 19:07:12 -0400
+Processing by ComputersController#index as */*
+  [1m[36mComputer Load (0.3ms)[0m  [1m[34mSELECT "computers".* FROM "computers" ORDER BY name ASC[0m
+  ↳ app/controllers/computers_controller.rb:5:in `index'
+Completed 200 OK in 3ms (Views: 2.7ms | ActiveRecord: 0.3ms | Allocations: 2852)
+
+
+Started GET "/computers/16" for ::1 at 2021-05-25 19:07:14 -0400
+Processing by ComputersController#show as */*
+  Parameters: {"id"=>"16"}
+  [1m[36mComputer Load (0.4ms)[0m  [1m[34mSELECT "computers".* FROM "computers" WHERE "computers"."id" = ? LIMIT ?[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/controllers/computers_controller.rb:9:in `show'
+  [1m[36mPart Load (0.3ms)[0m  [1m[34mSELECT "parts".* FROM "parts" WHERE "parts"."computer_id" = ?[0m  [["computer_id", 16]]
+  ↳ app/controllers/computers_controller.rb:10:in `show'
+Completed 200 OK in 4ms (Views: 1.8ms | ActiveRecord: 0.7ms | Allocations: 1992)
+
+
+Started DELETE "/parts/41" for ::1 at 2021-05-25 19:07:16 -0400
+Processing by PartsController#destroy as */*
+  Parameters: {"id"=>"41"}
+  [1m[36mPart Load (0.3ms)[0m  [1m[34mSELECT "parts".* FROM "parts" WHERE "parts"."id" = ? LIMIT ?[0m  [["id", 41], ["LIMIT", 1]]
+  ↳ app/controllers/parts_controller.rb:33:in `destroy'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/parts_controller.rb:34:in `destroy'
+  [1m[36mPart Destroy (1.6ms)[0m  [1m[31mDELETE FROM "parts" WHERE "parts"."id" = ?[0m  [["id", 41]]
+  ↳ app/controllers/parts_controller.rb:34:in `destroy'
+  [1m[35m (6.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/parts_controller.rb:34:in `destroy'
+Completed 200 OK in 13ms (Views: 0.4ms | ActiveRecord: 8.7ms | Allocations: 3621)
+
+
+Started DELETE "/parts/40" for ::1 at 2021-05-25 19:07:18 -0400
+Processing by PartsController#destroy as */*
+  Parameters: {"id"=>"40"}
+  [1m[36mPart Load (0.4ms)[0m  [1m[34mSELECT "parts".* FROM "parts" WHERE "parts"."id" = ? LIMIT ?[0m  [["id", 40], ["LIMIT", 1]]
+  ↳ app/controllers/parts_controller.rb:33:in `destroy'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/parts_controller.rb:34:in `destroy'
+  [1m[36mPart Destroy (2.7ms)[0m  [1m[31mDELETE FROM "parts" WHERE "parts"."id" = ?[0m  [["id", 40]]
+  ↳ app/controllers/parts_controller.rb:34:in `destroy'
+  [1m[35m (5.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/parts_controller.rb:34:in `destroy'
+Completed 200 OK in 13ms (Views: 0.3ms | ActiveRecord: 8.7ms | Allocations: 3468)
+
+
+Started GET "/computers" for ::1 at 2021-05-25 19:07:31 -0400
+Processing by ComputersController#index as */*
+  [1m[36mComputer Load (0.4ms)[0m  [1m[34mSELECT "computers".* FROM "computers" ORDER BY name ASC[0m
+  ↳ app/controllers/computers_controller.rb:5:in `index'
+Completed 200 OK in 3ms (Views: 2.7ms | ActiveRecord: 0.4ms | Allocations: 2825)
+
+
+Started GET "/computers" for ::1 at 2021-05-25 19:08:02 -0400
+Processing by ComputersController#index as */*
+  [1m[36mComputer Load (0.3ms)[0m  [1m[34mSELECT "computers".* FROM "computers" ORDER BY name ASC[0m
+  ↳ app/controllers/computers_controller.rb:5:in `index'
+Completed 200 OK in 3ms (Views: 2.5ms | ActiveRecord: 0.3ms | Allocations: 2825)
+
+
+Started POST "/computers" for ::1 at 2021-05-25 19:08:11 -0400
+Processing by ComputersController#create as */*
+  Parameters: {"computer"=>{"name"=>"matts computer"}}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/computers_controller.rb:14:in `create'
+  [1m[36mComputer Create (1.3ms)[0m  [1m[32mINSERT INTO "computers" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "matts computer"], ["created_at", "2021-05-25 23:08:11.879329"], ["updated_at", "2021-05-25 23:08:11.879329"]]
+  ↳ app/controllers/computers_controller.rb:14:in `create'
+  [1m[35m (6.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/computers_controller.rb:14:in `create'
+Completed 200 OK in 12ms (Views: 0.3ms | ActiveRecord: 7.8ms | Allocations: 3348)
+
+
+Started GET "/computers/17" for ::1 at 2021-05-25 19:08:15 -0400
+Processing by ComputersController#show as */*
+  Parameters: {"id"=>"17"}
+  [1m[36mComputer Load (0.2ms)[0m  [1m[34mSELECT "computers".* FROM "computers" WHERE "computers"."id" = ? LIMIT ?[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/computers_controller.rb:9:in `show'
+  [1m[36mPart Load (0.3ms)[0m  [1m[34mSELECT "parts".* FROM "parts" WHERE "parts"."computer_id" = ?[0m  [["computer_id", 17]]
+  ↳ app/controllers/computers_controller.rb:10:in `show'
+Completed 200 OK in 3ms (Views: 1.5ms | ActiveRecord: 0.5ms | Allocations: 1631)
+
+
+Started POST "/parts" for ::1 at 2021-05-25 19:08:40 -0400
+Processing by PartsController#create as JSON
+  Parameters: {"part"=>{"item"=>"cpu", "brand"=>"intel", "model"=>"cr700", "price"=>"500", "computer_id"=>"17"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/parts_controller.rb:14:in `create'
+  [1m[36mComputer Load (0.3ms)[0m  [1m[34mSELECT "computers".* FROM "computers" WHERE "computers"."id" = ? LIMIT ?[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/parts_controller.rb:14:in `create'
+  [1m[36mPart Create (1.1ms)[0m  [1m[32mINSERT INTO "parts" ("item", "brand", "model", "price", "computer_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["item", "cpu"], ["brand", "intel"], ["model", "cr700"], ["price", 500], ["computer_id", 17], ["created_at", "2021-05-25 23:08:40.788293"], ["updated_at", "2021-05-25 23:08:40.788293"]]
+  ↳ app/controllers/parts_controller.rb:14:in `create'
+  [1m[35m (5.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/parts_controller.rb:14:in `create'
+Completed 200 OK in 14ms (Views: 0.4ms | ActiveRecord: 7.1ms | Allocations: 4737)
+
+
+Started POST "/parts" for ::1 at 2021-05-25 19:09:02 -0400
+Processing by PartsController#create as JSON
+  Parameters: {"part"=>{"item"=>"gpu", "brand"=>"test1", "model"=>"test1", "price"=>"200", "computer_id"=>"17"}}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/parts_controller.rb:14:in `create'
+  [1m[36mComputer Load (0.3ms)[0m  [1m[34mSELECT "computers".* FROM "computers" WHERE "computers"."id" = ? LIMIT ?[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/parts_controller.rb:14:in `create'
+  [1m[36mPart Create (2.7ms)[0m  [1m[32mINSERT INTO "parts" ("item", "brand", "model", "price", "computer_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["item", "gpu"], ["brand", "test1"], ["model", "test1"], ["price", 200], ["computer_id", 17], ["created_at", "2021-05-25 23:09:02.082078"], ["updated_at", "2021-05-25 23:09:02.082078"]]
+  ↳ app/controllers/parts_controller.rb:14:in `create'
+  [1m[35m (5.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/parts_controller.rb:14:in `create'
+Completed 200 OK in 15ms (Views: 0.4ms | ActiveRecord: 8.9ms | Allocations: 4727)
+
+
+Started GET "/computers" for ::1 at 2021-05-25 19:09:05 -0400
+Processing by ComputersController#index as */*
+  [1m[36mComputer Load (0.3ms)[0m  [1m[34mSELECT "computers".* FROM "computers" ORDER BY name ASC[0m
+  ↳ app/controllers/computers_controller.rb:5:in `index'
+Completed 200 OK in 4ms (Views: 3.1ms | ActiveRecord: 0.3ms | Allocations: 2950)
+
+
+Started GET "/computers/17" for ::1 at 2021-05-25 19:09:11 -0400
+Processing by ComputersController#show as */*
+  Parameters: {"id"=>"17"}
+  [1m[36mComputer Load (0.2ms)[0m  [1m[34mSELECT "computers".* FROM "computers" WHERE "computers"."id" = ? LIMIT ?[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/computers_controller.rb:9:in `show'
+  [1m[36mPart Load (0.4ms)[0m  [1m[34mSELECT "parts".* FROM "parts" WHERE "parts"."computer_id" = ?[0m  [["computer_id", 17]]
+  ↳ app/controllers/computers_controller.rb:10:in `show'
+Completed 200 OK in 4ms (Views: 2.4ms | ActiveRecord: 0.6ms | Allocations: 1981)
+
+
+Started PATCH "/parts/42" for ::1 at 2021-05-25 19:09:44 -0400
+Processing by PartsController#update as */*
+  Parameters: {"part"=>{"item"=>"cpu", "brand"=>"intel", "model"=>"cr500", "price"=>"200"}, "id"=>"42"}
+  [1m[36mPart Load (0.2ms)[0m  [1m[34mSELECT "parts".* FROM "parts" WHERE "parts"."id" = ? LIMIT ?[0m  [["id", 42], ["LIMIT", 1]]
+  ↳ app/controllers/parts_controller.rb:23:in `update'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/parts_controller.rb:25:in `update'
+  [1m[36mComputer Load (0.3ms)[0m  [1m[34mSELECT "computers".* FROM "computers" WHERE "computers"."id" = ? LIMIT ?[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/parts_controller.rb:25:in `update'
+  [1m[36mPart Update (2.7ms)[0m  [1m[33mUPDATE "parts" SET "model" = ?, "price" = ?, "updated_at" = ? WHERE "parts"."id" = ?[0m  [["model", "cr500"], ["price", 200], ["updated_at", "2021-05-25 23:09:44.362205"], ["id", 42]]
+  ↳ app/controllers/parts_controller.rb:25:in `update'
+  [1m[35m (10.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/parts_controller.rb:25:in `update'
+Completed 200 OK in 21ms (Views: 0.3ms | ActiveRecord: 14.0ms | Allocations: 5383)
+
+
+Started GET "/computers/12" for ::1 at 2021-05-25 19:09:57 -0400
+Processing by ComputersController#show as HTML
+  Parameters: {"id"=>"12"}
+  [1m[36mComputer Load (0.2ms)[0m  [1m[34mSELECT "computers".* FROM "computers" WHERE "computers"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/computers_controller.rb:9:in `show'
+  [1m[36mPart Load (0.2ms)[0m  [1m[34mSELECT "parts".* FROM "parts" WHERE "parts"."computer_id" = ?[0m  [["computer_id", 12]]
+  ↳ app/controllers/computers_controller.rb:10:in `show'
+Completed 200 OK in 3ms (Views: 1.5ms | ActiveRecord: 0.4ms | Allocations: 1804)
+
+
+Started GET "/computers/42" for ::1 at 2021-05-25 19:10:15 -0400
+Processing by ComputersController#show as HTML
+  Parameters: {"id"=>"42"}
+  [1m[36mComputer Load (0.3ms)[0m  [1m[34mSELECT "computers".* FROM "computers" WHERE "computers"."id" = ? LIMIT ?[0m  [["id", 42], ["LIMIT", 1]]
+  ↳ app/controllers/computers_controller.rb:9:in `show'
+Completed 404 Not Found in 1ms (ActiveRecord: 0.3ms | Allocations: 609)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Computer with 'id'=42):
+  
+app/controllers/computers_controller.rb:9:in `show'
+Started GET "/computers/17" for ::1 at 2021-05-25 19:10:30 -0400
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ComputersController#show as HTML
+  Parameters: {"id"=>"17"}
+  [1m[36mComputer Load (0.2ms)[0m  [1m[34mSELECT "computers".* FROM "computers" WHERE "computers"."id" = ? LIMIT ?[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/computers_controller.rb:9:in `show'
+  [1m[36mPart Load (0.2ms)[0m  [1m[34mSELECT "parts".* FROM "parts" WHERE "parts"."computer_id" = ?[0m  [["computer_id", 17]]
+  ↳ app/controllers/computers_controller.rb:10:in `show'
+Completed 200 OK in 21ms (Views: 10.9ms | ActiveRecord: 3.8ms | Allocations: 11764)
+
+
+Started PATCH "/parts/42" for ::1 at 2021-05-25 19:10:55 -0400
+Processing by PartsController#update as */*
+  Parameters: {"part"=>{"item"=>"cpu", "brand"=>"intel", "model"=>"cr600", "price"=>"300"}, "id"=>"42"}
+  [1m[36mPart Load (0.4ms)[0m  [1m[34mSELECT "parts".* FROM "parts" WHERE "parts"."id" = ? LIMIT ?[0m  [["id", 42], ["LIMIT", 1]]
+  ↳ app/controllers/parts_controller.rb:23:in `update'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/parts_controller.rb:25:in `update'
+  [1m[36mComputer Load (0.3ms)[0m  [1m[34mSELECT "computers".* FROM "computers" WHERE "computers"."id" = ? LIMIT ?[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/parts_controller.rb:25:in `update'
+  [1m[36mPart Update (0.9ms)[0m  [1m[33mUPDATE "parts" SET "model" = ?, "price" = ?, "updated_at" = ? WHERE "parts"."id" = ?[0m  [["model", "cr600"], ["price", 300], ["updated_at", "2021-05-25 23:10:55.230014"], ["id", 42]]
+  ↳ app/controllers/parts_controller.rb:25:in `update'
+  [1m[35m (5.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/parts_controller.rb:25:in `update'
+Completed 200 OK in 14ms (Views: 0.3ms | ActiveRecord: 7.2ms | Allocations: 5718)
+
+
+Started GET "/computers/17" for ::1 at 2021-05-25 19:10:58 -0400
+Processing by ComputersController#show as HTML
+  Parameters: {"id"=>"17"}
+  [1m[36mComputer Load (0.4ms)[0m  [1m[34mSELECT "computers".* FROM "computers" WHERE "computers"."id" = ? LIMIT ?[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/computers_controller.rb:9:in `show'
+  [1m[36mPart Load (0.2ms)[0m  [1m[34mSELECT "parts".* FROM "parts" WHERE "parts"."computer_id" = ?[0m  [["computer_id", 17]]
+  ↳ app/controllers/computers_controller.rb:10:in `show'
+Completed 200 OK in 3ms (Views: 1.6ms | ActiveRecord: 0.6ms | Allocations: 1979)
+
+
+Started DELETE "/parts/42" for ::1 at 2021-05-25 19:11:09 -0400
+Processing by PartsController#destroy as */*
+  Parameters: {"id"=>"42"}
+  [1m[36mPart Load (0.2ms)[0m  [1m[34mSELECT "parts".* FROM "parts" WHERE "parts"."id" = ? LIMIT ?[0m  [["id", 42], ["LIMIT", 1]]
+  ↳ app/controllers/parts_controller.rb:33:in `destroy'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/parts_controller.rb:34:in `destroy'
+  [1m[36mPart Destroy (0.9ms)[0m  [1m[31mDELETE FROM "parts" WHERE "parts"."id" = ?[0m  [["id", 42]]
+  ↳ app/controllers/parts_controller.rb:34:in `destroy'
+  [1m[35m (7.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/parts_controller.rb:34:in `destroy'
+Completed 200 OK in 13ms (Views: 0.4ms | ActiveRecord: 9.1ms | Allocations: 3468)
+
+
+Started GET "/computers/17" for ::1 at 2021-05-25 19:11:13 -0400
+Processing by ComputersController#show as HTML
+  Parameters: {"id"=>"17"}
+  [1m[36mComputer Load (0.2ms)[0m  [1m[34mSELECT "computers".* FROM "computers" WHERE "computers"."id" = ? LIMIT ?[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/computers_controller.rb:9:in `show'
+  [1m[36mPart Load (0.2ms)[0m  [1m[34mSELECT "parts".* FROM "parts" WHERE "parts"."computer_id" = ?[0m  [["computer_id", 17]]
+  ↳ app/controllers/computers_controller.rb:10:in `show'
+Completed 200 OK in 3ms (Views: 1.9ms | ActiveRecord: 0.4ms | Allocations: 1804)
+
+
+Started GET "/computers" for ::1 at 2021-05-27 18:42:11 -0400
+  [1m[35m (12.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Started GET "/computers" for ::1 at 2021-05-27 18:42:11 -0400
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ComputersController#index as */*
+  [1m[36mComputer Load (0.3ms)[0m  [1m[34mSELECT "computers".* FROM "computers" ORDER BY name ASC[0m
+  ↳ app/controllers/computers_controller.rb:5:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Completed 200 OK in 62ms (Views: 18.7ms | ActiveRecord: 1.3ms | Allocations: 7269)
+
+
+Processing by ComputersController#index as */*
+  [1m[36mComputer Load (1.6ms)[0m  [1m[34mSELECT "computers".* FROM "computers" ORDER BY name ASC[0m
+  ↳ app/controllers/computers_controller.rb:5:in `index'
+Completed 200 OK in 9ms (Views: 7.2ms | ActiveRecord: 1.6ms | Allocations: 2964)
+
+
+Started GET "/computers/1" for ::1 at 2021-05-27 18:42:19 -0400
+Processing by ComputersController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mComputer Load (0.5ms)[0m  [1m[34mSELECT "computers".* FROM "computers" WHERE "computers"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/computers_controller.rb:9:in `show'
+  [1m[36mPart Load (0.2ms)[0m  [1m[34mSELECT "parts".* FROM "parts" WHERE "parts"."computer_id" = ?[0m  [["computer_id", 1]]
+  ↳ app/controllers/computers_controller.rb:10:in `show'
+Completed 200 OK in 175ms (Views: 150.1ms | ActiveRecord: 1.6ms | Allocations: 12948)
+
+
+Started GET "/computers/3" for ::1 at 2021-05-27 18:42:23 -0400
+Processing by ComputersController#show as */*
+  Parameters: {"id"=>"3"}
+  [1m[36mComputer Load (0.3ms)[0m  [1m[34mSELECT "computers".* FROM "computers" WHERE "computers"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/computers_controller.rb:9:in `show'
+  [1m[36mPart Load (0.2ms)[0m  [1m[34mSELECT "parts".* FROM "parts" WHERE "parts"."computer_id" = ?[0m  [["computer_id", 3]]
+  ↳ app/controllers/computers_controller.rb:10:in `show'
+Completed 200 OK in 4ms (Views: 2.1ms | ActiveRecord: 0.5ms | Allocations: 2524)
+
+
+Started POST "/parts" for ::1 at 2021-05-27 18:42:32 -0400
+Processing by PartsController#create as JSON
+  Parameters: {"part"=>{"item"=>"cpu", "brand"=>"Bench-made", "model"=>"300", "computer_id"=>"3"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/parts_controller.rb:14:in `create'
+  [1m[36mComputer Load (0.3ms)[0m  [1m[34mSELECT "computers".* FROM "computers" WHERE "computers"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/parts_controller.rb:14:in `create'
+  [1m[36mPart Create (1.2ms)[0m  [1m[32mINSERT INTO "parts" ("item", "brand", "model", "computer_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["item", "cpu"], ["brand", "Bench-made"], ["model", "300"], ["computer_id", 3], ["created_at", "2021-05-27 22:42:32.118072"], ["updated_at", "2021-05-27 22:42:32.118072"]]
+  ↳ app/controllers/parts_controller.rb:14:in `create'
+  [1m[35m (6.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/parts_controller.rb:14:in `create'
+Completed 200 OK in 16ms (Views: 0.4ms | ActiveRecord: 8.3ms | Allocations: 5154)
+
+
+Started GET "/computers" for ::1 at 2021-05-27 18:42:35 -0400
+Processing by ComputersController#index as */*
+  [1m[36mComputer Load (0.3ms)[0m  [1m[34mSELECT "computers".* FROM "computers" ORDER BY name ASC[0m
+  ↳ app/controllers/computers_controller.rb:5:in `index'
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.3ms | Allocations: 2950)
+
+
+Started GET "/computers/3" for ::1 at 2021-05-27 18:42:37 -0400
+Processing by ComputersController#show as */*
+  Parameters: {"id"=>"3"}
+  [1m[36mComputer Load (0.2ms)[0m  [1m[34mSELECT "computers".* FROM "computers" WHERE "computers"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/computers_controller.rb:9:in `show'
+  [1m[36mPart Load (0.3ms)[0m  [1m[34mSELECT "parts".* FROM "parts" WHERE "parts"."computer_id" = ?[0m  [["computer_id", 3]]
+  ↳ app/controllers/computers_controller.rb:10:in `show'
+Completed 200 OK in 5ms (Views: 3.4ms | ActiveRecord: 0.5ms | Allocations: 2683)
+
+
+Started GET "/computers" for ::1 at 2021-05-27 18:42:50 -0400
+Processing by ComputersController#index as */*
+  [1m[36mComputer Load (0.4ms)[0m  [1m[34mSELECT "computers".* FROM "computers" ORDER BY name ASC[0m
+  ↳ app/controllers/computers_controller.rb:5:in `index'
+Completed 200 OK in 4ms (Views: 2.9ms | ActiveRecord: 0.4ms | Allocations: 2950)
+
+
+Started GET "/computers/16" for ::1 at 2021-05-27 18:42:52 -0400
+Processing by ComputersController#show as */*
+  Parameters: {"id"=>"16"}
+  [1m[36mComputer Load (0.3ms)[0m  [1m[34mSELECT "computers".* FROM "computers" WHERE "computers"."id" = ? LIMIT ?[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/controllers/computers_controller.rb:9:in `show'
+  [1m[36mPart Load (0.4ms)[0m  [1m[34mSELECT "parts".* FROM "parts" WHERE "parts"."computer_id" = ?[0m  [["computer_id", 16]]
+  ↳ app/controllers/computers_controller.rb:10:in `show'
+Completed 200 OK in 4ms (Views: 2.3ms | ActiveRecord: 0.6ms | Allocations: 1631)
+
+
+Started POST "/parts" for ::1 at 2021-05-27 18:43:00 -0400
+Processing by PartsController#create as JSON
+  Parameters: {"part"=>{"item"=>"test1", "brand"=>"test1", "model"=>"300", "computer_id"=>"16"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/parts_controller.rb:14:in `create'
+  [1m[36mComputer Load (0.2ms)[0m  [1m[34mSELECT "computers".* FROM "computers" WHERE "computers"."id" = ? LIMIT ?[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/controllers/parts_controller.rb:14:in `create'
+  [1m[36mPart Create (0.9ms)[0m  [1m[32mINSERT INTO "parts" ("item", "brand", "model", "computer_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["item", "test1"], ["brand", "test1"], ["model", "300"], ["computer_id", 16], ["created_at", "2021-05-27 22:43:00.439193"], ["updated_at", "2021-05-27 22:43:00.439193"]]
+  ↳ app/controllers/parts_controller.rb:14:in `create'
+  [1m[35m (6.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/parts_controller.rb:14:in `create'
+Completed 200 OK in 14ms (Views: 0.4ms | ActiveRecord: 7.8ms | Allocations: 4701)
+
+
+Started GET "/computers" for ::1 at 2021-05-27 18:43:47 -0400
+Processing by ComputersController#index as */*
+  [1m[36mComputer Load (0.6ms)[0m  [1m[34mSELECT "computers".* FROM "computers" ORDER BY name ASC[0m
+  ↳ app/controllers/computers_controller.rb:5:in `index'
+Completed 200 OK in 4ms (Views: 3.4ms | ActiveRecord: 0.6ms | Allocations: 2950)
+
+
+Started GET "/computers/16" for ::1 at 2021-05-27 18:43:48 -0400
+Processing by ComputersController#show as */*
+  Parameters: {"id"=>"16"}
+  [1m[36mComputer Load (0.3ms)[0m  [1m[34mSELECT "computers".* FROM "computers" WHERE "computers"."id" = ? LIMIT ?[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/controllers/computers_controller.rb:9:in `show'
+  [1m[36mPart Load (0.2ms)[0m  [1m[34mSELECT "parts".* FROM "parts" WHERE "parts"."computer_id" = ?[0m  [["computer_id", 16]]
+  ↳ app/controllers/computers_controller.rb:10:in `show'
+Completed 200 OK in 3ms (Views: 1.7ms | ActiveRecord: 0.5ms | Allocations: 1806)
+
+
+Started PATCH "/parts/45" for ::1 at 2021-05-27 18:43:58 -0400
+Processing by PartsController#update as */*
+  Parameters: {"part"=>{"item"=>"test1", "brand"=>"test1", "model"=>"test1", "price"=>"300"}, "id"=>"45"}
+  [1m[36mPart Load (0.3ms)[0m  [1m[34mSELECT "parts".* FROM "parts" WHERE "parts"."id" = ? LIMIT ?[0m  [["id", 45], ["LIMIT", 1]]
+  ↳ app/controllers/parts_controller.rb:23:in `update'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/parts_controller.rb:25:in `update'
+  [1m[36mComputer Load (0.3ms)[0m  [1m[34mSELECT "computers".* FROM "computers" WHERE "computers"."id" = ? LIMIT ?[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/controllers/parts_controller.rb:25:in `update'
+  [1m[36mPart Update (1.3ms)[0m  [1m[33mUPDATE "parts" SET "model" = ?, "price" = ?, "updated_at" = ? WHERE "parts"."id" = ?[0m  [["model", "test1"], ["price", 300], ["updated_at", "2021-05-27 22:43:58.582072"], ["id", 45]]
+  ↳ app/controllers/parts_controller.rb:25:in `update'
+  [1m[35m (6.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/parts_controller.rb:25:in `update'
+Completed 200 OK in 17ms (Views: 0.7ms | ActiveRecord: 8.5ms | Allocations: 5523)
+
+
+Started GET "/computers" for ::1 at 2021-05-27 18:44:01 -0400
+Processing by ComputersController#index as */*
+  [1m[36mComputer Load (0.7ms)[0m  [1m[34mSELECT "computers".* FROM "computers" ORDER BY name ASC[0m
+  ↳ app/controllers/computers_controller.rb:5:in `index'
+Completed 200 OK in 5ms (Views: 4.4ms | ActiveRecord: 0.7ms | Allocations: 2951)
+
+
+Started GET "/computers/16" for ::1 at 2021-05-27 18:44:03 -0400
+Processing by ComputersController#show as */*
+  Parameters: {"id"=>"16"}
+  [1m[36mComputer Load (0.3ms)[0m  [1m[34mSELECT "computers".* FROM "computers" WHERE "computers"."id" = ? LIMIT ?[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/controllers/computers_controller.rb:9:in `show'
+  [1m[36mPart Load (0.3ms)[0m  [1m[34mSELECT "parts".* FROM "parts" WHERE "parts"."computer_id" = ?[0m  [["computer_id", 16]]
+  ↳ app/controllers/computers_controller.rb:10:in `show'
+Completed 200 OK in 3ms (Views: 1.9ms | ActiveRecord: 0.6ms | Allocations: 1806)
+
+
+Started GET "/computers" for ::1 at 2021-05-27 18:45:22 -0400
+Processing by ComputersController#index as */*
+  [1m[36mComputer Load (0.4ms)[0m  [1m[34mSELECT "computers".* FROM "computers" ORDER BY name ASC[0m
+  ↳ app/controllers/computers_controller.rb:5:in `index'
+Completed 200 OK in 4ms (Views: 2.8ms | ActiveRecord: 0.4ms | Allocations: 2950)
+
+
+Started GET "/computers" for ::1 at 2021-05-27 18:45:22 -0400
+Processing by ComputersController#index as */*
+  [1m[36mComputer Load (0.4ms)[0m  [1m[34mSELECT "computers".* FROM "computers" ORDER BY name ASC[0m
+  ↳ app/controllers/computers_controller.rb:5:in `index'
+Completed 200 OK in 3ms (Views: 2.7ms | ActiveRecord: 0.4ms | Allocations: 2950)
+
+
+Started GET "/computers/16" for ::1 at 2021-05-27 18:45:24 -0400
+Processing by ComputersController#show as */*
+  Parameters: {"id"=>"16"}
+  [1m[36mComputer Load (0.3ms)[0m  [1m[34mSELECT "computers".* FROM "computers" WHERE "computers"."id" = ? LIMIT ?[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/controllers/computers_controller.rb:9:in `show'
+  [1m[36mPart Load (0.2ms)[0m  [1m[34mSELECT "parts".* FROM "parts" WHERE "parts"."computer_id" = ?[0m  [["computer_id", 16]]
+  ↳ app/controllers/computers_controller.rb:10:in `show'
+Completed 200 OK in 3ms (Views: 1.7ms | ActiveRecord: 0.6ms | Allocations: 1806)
+
+
+Started PATCH "/parts/45" for ::1 at 2021-05-27 18:45:32 -0400
+Processing by PartsController#update as */*
+  Parameters: {"part"=>{"item"=>"test1", "brand"=>"test1", "model"=>"test2", "price"=>"300"}, "id"=>"45"}
+  [1m[36mPart Load (0.2ms)[0m  [1m[34mSELECT "parts".* FROM "parts" WHERE "parts"."id" = ? LIMIT ?[0m  [["id", 45], ["LIMIT", 1]]
+  ↳ app/controllers/parts_controller.rb:23:in `update'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/parts_controller.rb:25:in `update'
+  [1m[36mComputer Load (0.3ms)[0m  [1m[34mSELECT "computers".* FROM "computers" WHERE "computers"."id" = ? LIMIT ?[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/controllers/parts_controller.rb:25:in `update'
+  [1m[36mPart Update (1.2ms)[0m  [1m[33mUPDATE "parts" SET "model" = ?, "updated_at" = ? WHERE "parts"."id" = ?[0m  [["model", "test2"], ["updated_at", "2021-05-27 22:45:32.436313"], ["id", 45]]
+  ↳ app/controllers/parts_controller.rb:25:in `update'
+  [1m[35m (7.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/parts_controller.rb:25:in `update'
+Completed 200 OK in 17ms (Views: 0.5ms | ActiveRecord: 8.8ms | Allocations: 5361)
+
+
+Started GET "/computers" for ::1 at 2021-05-27 18:45:36 -0400
+Processing by ComputersController#index as */*
+  [1m[36mComputer Load (0.3ms)[0m  [1m[34mSELECT "computers".* FROM "computers" ORDER BY name ASC[0m
+  ↳ app/controllers/computers_controller.rb:5:in `index'
+Completed 200 OK in 3ms (Views: 2.8ms | ActiveRecord: 0.3ms | Allocations: 2950)
+
+
+Started GET "/computers/16" for ::1 at 2021-05-27 18:45:38 -0400
+Processing by ComputersController#show as */*
+  Parameters: {"id"=>"16"}
+  [1m[36mComputer Load (0.2ms)[0m  [1m[34mSELECT "computers".* FROM "computers" WHERE "computers"."id" = ? LIMIT ?[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/controllers/computers_controller.rb:9:in `show'
+  [1m[36mPart Load (0.4ms)[0m  [1m[34mSELECT "parts".* FROM "parts" WHERE "parts"."computer_id" = ?[0m  [["computer_id", 16]]
+  ↳ app/controllers/computers_controller.rb:10:in `show'
+Completed 200 OK in 4ms (Views: 2.2ms | ActiveRecord: 0.6ms | Allocations: 1806)
+
+
+Started GET "/computers" for ::1 at 2021-05-27 18:49:47 -0400
+Processing by ComputersController#index as */*
+  [1m[36mComputer Load (0.4ms)[0m  [1m[34mSELECT "computers".* FROM "computers" ORDER BY name ASC[0m
+  ↳ app/controllers/computers_controller.rb:5:in `index'
+Completed 200 OK in 5ms (Views: 4.1ms | ActiveRecord: 0.4ms | Allocations: 2950)
+
+
+Started GET "/computers" for ::1 at 2021-05-27 18:54:12 -0400
+Processing by ComputersController#index as */*
+  [1m[36mComputer Load (0.5ms)[0m  [1m[34mSELECT "computers".* FROM "computers" ORDER BY name ASC[0m
+  ↳ app/controllers/computers_controller.rb:5:in `index'
+Completed 200 OK in 4ms (Views: 3.3ms | ActiveRecord: 0.5ms | Allocations: 2950)
+
+
+Started GET "/computers" for ::1 at 2021-05-27 19:00:08 -0400
+Processing by ComputersController#index as */*
+  [1m[36mComputer Load (0.6ms)[0m  [1m[34mSELECT "computers".* FROM "computers" ORDER BY name ASC[0m
+  ↳ app/controllers/computers_controller.rb:5:in `index'
+Completed 200 OK in 15ms (Views: 13.6ms | ActiveRecord: 0.6ms | Allocations: 2953)
+
+
+Started GET "/computers" for ::1 at 2021-05-27 19:01:00 -0400
+Processing by ComputersController#index as */*
+  [1m[36mComputer Load (0.4ms)[0m  [1m[34mSELECT "computers".* FROM "computers" ORDER BY name ASC[0m
+  ↳ app/controllers/computers_controller.rb:5:in `index'
+Completed 200 OK in 5ms (Views: 4.3ms | ActiveRecord: 0.4ms | Allocations: 2950)
+
+
+Started GET "/computers" for ::1 at 2021-05-27 19:01:28 -0400
+Processing by ComputersController#index as */*
+  [1m[36mComputer Load (0.4ms)[0m  [1m[34mSELECT "computers".* FROM "computers" ORDER BY name ASC[0m
+  ↳ app/controllers/computers_controller.rb:5:in `index'
+Completed 200 OK in 5ms (Views: 3.9ms | ActiveRecord: 0.4ms | Allocations: 2950)
+
+
+Started GET "/computers" for ::1 at 2021-05-27 19:05:25 -0400
+Processing by ComputersController#index as */*
+  [1m[36mComputer Load (0.5ms)[0m  [1m[34mSELECT "computers".* FROM "computers" ORDER BY name ASC[0m
+  ↳ app/controllers/computers_controller.rb:5:in `index'
+Completed 200 OK in 4ms (Views: 3.7ms | ActiveRecord: 0.5ms | Allocations: 2950)
+
+
+Started GET "/computers" for ::1 at 2021-05-27 19:05:41 -0400
+Processing by ComputersController#index as */*
+  [1m[36mComputer Load (0.7ms)[0m  [1m[34mSELECT "computers".* FROM "computers" ORDER BY name ASC[0m
+  ↳ app/controllers/computers_controller.rb:5:in `index'
+Completed 200 OK in 6ms (Views: 5.1ms | ActiveRecord: 0.7ms | Allocations: 2950)
+
+
+Started GET "/computers" for ::1 at 2021-05-27 19:07:45 -0400
+Processing by ComputersController#index as */*
+  [1m[36mComputer Load (0.5ms)[0m  [1m[34mSELECT "computers".* FROM "computers" ORDER BY name ASC[0m
+  ↳ app/controllers/computers_controller.rb:5:in `index'
+Completed 200 OK in 5ms (Views: 4.4ms | ActiveRecord: 0.5ms | Allocations: 2950)
+
+
+Started GET "/computers" for ::1 at 2021-05-27 19:13:07 -0400
+Processing by ComputersController#index as */*
+  [1m[36mComputer Load (0.6ms)[0m  [1m[34mSELECT "computers".* FROM "computers" ORDER BY name ASC[0m
+  ↳ app/controllers/computers_controller.rb:5:in `index'
+Completed 200 OK in 5ms (Views: 3.6ms | ActiveRecord: 0.6ms | Allocations: 2950)
+
+
+Started GET "/computers" for ::1 at 2021-05-27 19:14:53 -0400
+Processing by ComputersController#index as */*
+  [1m[36mComputer Load (0.4ms)[0m  [1m[34mSELECT "computers".* FROM "computers" ORDER BY name ASC[0m
+  ↳ app/controllers/computers_controller.rb:5:in `index'
+Completed 200 OK in 4ms (Views: 3.1ms | ActiveRecord: 0.4ms | Allocations: 2950)
+
+
+Started GET "/computers" for ::1 at 2021-05-27 19:19:35 -0400
+Processing by ComputersController#index as */*
+  [1m[36mComputer Load (0.8ms)[0m  [1m[34mSELECT "computers".* FROM "computers" ORDER BY name ASC[0m
+  ↳ app/controllers/computers_controller.rb:5:in `index'
+Completed 200 OK in 5ms (Views: 3.8ms | ActiveRecord: 0.8ms | Allocations: 2950)
+
+
+Started GET "/computers" for ::1 at 2021-05-27 19:20:03 -0400
+Processing by ComputersController#index as */*
+  [1m[36mComputer Load (0.5ms)[0m  [1m[34mSELECT "computers".* FROM "computers" ORDER BY name ASC[0m
+  ↳ app/controllers/computers_controller.rb:5:in `index'
+Completed 200 OK in 5ms (Views: 3.8ms | ActiveRecord: 0.5ms | Allocations: 2950)
+
+
+Started GET "/computers" for ::1 at 2021-05-27 19:20:44 -0400
+Processing by ComputersController#index as */*
+  [1m[36mComputer Load (0.4ms)[0m  [1m[34mSELECT "computers".* FROM "computers" ORDER BY name ASC[0m
+  ↳ app/controllers/computers_controller.rb:5:in `index'
+Completed 200 OK in 4ms (Views: 3.1ms | ActiveRecord: 0.4ms | Allocations: 2950)
+
+
+Started GET "/computers" for ::1 at 2021-05-27 19:23:29 -0400
+Processing by ComputersController#index as */*
+  [1m[36mComputer Load (0.5ms)[0m  [1m[34mSELECT "computers".* FROM "computers" ORDER BY name ASC[0m
+  ↳ app/controllers/computers_controller.rb:5:in `index'
+Completed 200 OK in 5ms (Views: 4.2ms | ActiveRecord: 0.5ms | Allocations: 2950)
+
+
+Started GET "/computers" for ::1 at 2021-05-27 19:24:39 -0400
+Processing by ComputersController#index as */*
+  [1m[36mComputer Load (0.7ms)[0m  [1m[34mSELECT "computers".* FROM "computers" ORDER BY name ASC[0m
+  ↳ app/controllers/computers_controller.rb:5:in `index'
+Completed 200 OK in 6ms (Views: 5.0ms | ActiveRecord: 0.7ms | Allocations: 2950)
+
+
+Started GET "/computers" for ::1 at 2021-05-27 19:26:13 -0400
+Processing by ComputersController#index as */*
+  [1m[36mComputer Load (0.5ms)[0m  [1m[34mSELECT "computers".* FROM "computers" ORDER BY name ASC[0m
+  ↳ app/controllers/computers_controller.rb:5:in `index'
+Completed 200 OK in 5ms (Views: 4.4ms | ActiveRecord: 0.5ms | Allocations: 2950)
+
+
+Started GET "/computers/16" for ::1 at 2021-05-27 19:26:16 -0400
+Processing by ComputersController#show as */*
+  Parameters: {"id"=>"16"}
+  [1m[36mComputer Load (0.2ms)[0m  [1m[34mSELECT "computers".* FROM "computers" WHERE "computers"."id" = ? LIMIT ?[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/controllers/computers_controller.rb:9:in `show'
+  [1m[36mPart Load (0.4ms)[0m  [1m[34mSELECT "parts".* FROM "parts" WHERE "parts"."computer_id" = ?[0m  [["computer_id", 16]]
+  ↳ app/controllers/computers_controller.rb:10:in `show'
+Completed 200 OK in 4ms (Views: 2.2ms | ActiveRecord: 0.7ms | Allocations: 1806)
+
+
+Started GET "/computers" for ::1 at 2021-05-27 19:26:23 -0400
+Processing by ComputersController#index as */*
+  [1m[36mComputer Load (0.5ms)[0m  [1m[34mSELECT "computers".* FROM "computers" ORDER BY name ASC[0m
+  ↳ app/controllers/computers_controller.rb:5:in `index'
+Completed 200 OK in 4ms (Views: 3.4ms | ActiveRecord: 0.5ms | Allocations: 2950)
+
+
+Started GET "/computers" for ::1 at 2021-05-27 19:26:38 -0400
+Processing by ComputersController#index as */*
+  [1m[36mComputer Load (0.4ms)[0m  [1m[34mSELECT "computers".* FROM "computers" ORDER BY name ASC[0m
+  ↳ app/controllers/computers_controller.rb:5:in `index'
+Completed 200 OK in 4ms (Views: 3.1ms | ActiveRecord: 0.4ms | Allocations: 2950)
+
+
+Started GET "/computers/16" for ::1 at 2021-05-27 19:26:40 -0400
+Processing by ComputersController#show as */*
+  Parameters: {"id"=>"16"}
+  [1m[36mComputer Load (0.2ms)[0m  [1m[34mSELECT "computers".* FROM "computers" WHERE "computers"."id" = ? LIMIT ?[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/controllers/computers_controller.rb:9:in `show'
+  [1m[36mPart Load (0.2ms)[0m  [1m[34mSELECT "parts".* FROM "parts" WHERE "parts"."computer_id" = ?[0m  [["computer_id", 16]]
+  ↳ app/controllers/computers_controller.rb:10:in `show'
+Completed 200 OK in 3ms (Views: 1.5ms | ActiveRecord: 0.4ms | Allocations: 1806)
+
+
+Started GET "/computers" for ::1 at 2021-05-27 19:27:37 -0400
+Processing by ComputersController#index as */*
+  [1m[36mComputer Load (0.5ms)[0m  [1m[34mSELECT "computers".* FROM "computers" ORDER BY name ASC[0m
+  ↳ app/controllers/computers_controller.rb:5:in `index'
+Completed 200 OK in 4ms (Views: 2.8ms | ActiveRecord: 0.5ms | Allocations: 2950)
+
+
+Started GET "/computers/16" for ::1 at 2021-05-27 19:27:40 -0400
+Processing by ComputersController#show as */*
+  Parameters: {"id"=>"16"}
+  [1m[36mComputer Load (0.2ms)[0m  [1m[34mSELECT "computers".* FROM "computers" WHERE "computers"."id" = ? LIMIT ?[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/controllers/computers_controller.rb:9:in `show'
+  [1m[36mPart Load (0.2ms)[0m  [1m[34mSELECT "parts".* FROM "parts" WHERE "parts"."computer_id" = ?[0m  [["computer_id", 16]]
+  ↳ app/controllers/computers_controller.rb:10:in `show'
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.4ms | Allocations: 1806)
+
+
+Started GET "/computers/3" for ::1 at 2021-05-27 19:27:48 -0400
+Processing by ComputersController#show as */*
+  Parameters: {"id"=>"3"}
+  [1m[36mComputer Load (0.2ms)[0m  [1m[34mSELECT "computers".* FROM "computers" WHERE "computers"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/computers_controller.rb:9:in `show'
+  [1m[36mPart Load (0.2ms)[0m  [1m[34mSELECT "parts".* FROM "parts" WHERE "parts"."computer_id" = ?[0m  [["computer_id", 3]]
+  ↳ app/controllers/computers_controller.rb:10:in `show'
+Completed 200 OK in 3ms (Views: 2.0ms | ActiveRecord: 0.4ms | Allocations: 2683)
+
+
+Started GET "/computers" for ::1 at 2021-05-27 19:28:23 -0400
+Processing by ComputersController#index as */*
+  [1m[36mComputer Load (0.4ms)[0m  [1m[34mSELECT "computers".* FROM "computers" ORDER BY name ASC[0m
+  ↳ app/controllers/computers_controller.rb:5:in `index'
+Completed 200 OK in 4ms (Views: 3.3ms | ActiveRecord: 0.4ms | Allocations: 2950)
+
+
+Started GET "/computers/5" for ::1 at 2021-05-27 19:28:25 -0400
+Processing by ComputersController#show as */*
+  Parameters: {"id"=>"5"}
+  [1m[36mComputer Load (0.2ms)[0m  [1m[34mSELECT "computers".* FROM "computers" WHERE "computers"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/computers_controller.rb:9:in `show'
+  [1m[36mPart Load (0.3ms)[0m  [1m[34mSELECT "parts".* FROM "parts" WHERE "parts"."computer_id" = ?[0m  [["computer_id", 5]]
+  ↳ app/controllers/computers_controller.rb:10:in `show'
+Completed 200 OK in 3ms (Views: 1.8ms | ActiveRecord: 0.5ms | Allocations: 1806)
+
+
+Started GET "/computers/2" for ::1 at 2021-05-27 19:28:30 -0400
+Processing by ComputersController#show as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mComputer Load (0.2ms)[0m  [1m[34mSELECT "computers".* FROM "computers" WHERE "computers"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/computers_controller.rb:9:in `show'
+  [1m[36mPart Load (0.4ms)[0m  [1m[34mSELECT "parts".* FROM "parts" WHERE "parts"."computer_id" = ?[0m  [["computer_id", 2]]
+  ↳ app/controllers/computers_controller.rb:10:in `show'
+Completed 200 OK in 4ms (Views: 2.0ms | ActiveRecord: 0.6ms | Allocations: 1806)
+
+
+Started GET "/computers/1" for ::1 at 2021-05-27 19:28:32 -0400
+Processing by ComputersController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mComputer Load (0.2ms)[0m  [1m[34mSELECT "computers".* FROM "computers" WHERE "computers"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/computers_controller.rb:9:in `show'
+  [1m[36mPart Load (0.3ms)[0m  [1m[34mSELECT "parts".* FROM "parts" WHERE "parts"."computer_id" = ?[0m  [["computer_id", 1]]
+  ↳ app/controllers/computers_controller.rb:10:in `show'
+Completed 200 OK in 4ms (Views: 2.4ms | ActiveRecord: 0.5ms | Allocations: 2858)
+
+
+Started GET "/computers" for ::1 at 2021-05-27 19:29:55 -0400
+Processing by ComputersController#index as */*
+  [1m[36mComputer Load (0.5ms)[0m  [1m[34mSELECT "computers".* FROM "computers" ORDER BY name ASC[0m
+  ↳ app/controllers/computers_controller.rb:5:in `index'
+Completed 200 OK in 5ms (Views: 3.7ms | ActiveRecord: 0.5ms | Allocations: 2950)
+
+
+Started GET "/computers" for ::1 at 2021-05-27 19:30:35 -0400
+Processing by ComputersController#index as */*
+  [1m[36mComputer Load (0.4ms)[0m  [1m[34mSELECT "computers".* FROM "computers" ORDER BY name ASC[0m
+  ↳ app/controllers/computers_controller.rb:5:in `index'
+Completed 200 OK in 4ms (Views: 3.0ms | ActiveRecord: 0.4ms | Allocations: 2950)
+
+
+Started GET "/computers/12" for ::1 at 2021-05-27 19:30:40 -0400
+Processing by ComputersController#show as */*
+  Parameters: {"id"=>"12"}
+  [1m[36mComputer Load (0.2ms)[0m  [1m[34mSELECT "computers".* FROM "computers" WHERE "computers"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/computers_controller.rb:9:in `show'
+  [1m[36mPart Load (0.2ms)[0m  [1m[34mSELECT "parts".* FROM "parts" WHERE "parts"."computer_id" = ?[0m  [["computer_id", 12]]
+  ↳ app/controllers/computers_controller.rb:10:in `show'
+Completed 200 OK in 3ms (Views: 1.5ms | ActiveRecord: 0.4ms | Allocations: 1806)
+
+

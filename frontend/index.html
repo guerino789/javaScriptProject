@@ -1,83 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Inventory App</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-
-<header>
-    <h1>Computer Build Tracker</h1>
-    <h3>Keep track of what you need</h3>
-</header>
-
+	<meta charset="UTF-8">
+	<title>Inventory App</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"> </head>
+    <link rel="stylesheet" href="style.css"
 <body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <header>
+                    <h1>Computer Build Tracker</h1>
+                    <h3>Keep track of what you need</h3> 
+                </header>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+	            <select class="custom-select" name="computers" id="computers"> </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <form id="new-computer-form">
+                    <div class="form-group row">
+                        <label class="col-2 col-form-label" for="new-name"> Name your build</label>
+                        <div class="col-10">
+                            <input class="form-control" id="new-name" type="text" name="name" placeholder="Name Your Build">
+                        </div>
+                    </div>
+                    <input type="submit" class="btn btn-primary btn-block"> 
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <table id="parts-list" class="table table-dark table-striped table-hover">
+                    <thead>
+                        <tr class="font-monospace">
+                            <th> item </th>
+                            <th> Brand </th>
+                            <th> Model </th>
+                            <th> Price </th>
+                            <th> Id </th>
+                        </tr>
+                    </thead>
+                    <tbody> </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <form id="parts-list-form">
+                    <input type="text" name="item" id="item" placeholder="Item">
+                    <input type="text" name="brand" id="brand" placeholder="Brand">
+                    <input type="text" name="model" id="model" placeholder="Model">
+                    <input type="number" name="price" id="price" placeholder="Price">
+                    <input type="hidden" id="computerId">
+                    <input type="hidden" id="partId">
+                    <button onclick="addPart();">Add</button>
+                    <button onclick="updatePart();">Update</button>
+                    <button onclick="deletePart();">Delete</button>
+                </form>
+            </div>
+        </div>
+	</div>
+	<script src="src/index.js"></script>
+	<script src="src/computer.js"></script>
+	<script src="src/part.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 
-    <select name="computers" id="computers">
-
-    </select>
-
-    <form id="new-computer-form">
-        <input type="text" name="name" placeholder="Name Your Build">
-        <br/>
-        <input type="submit">
-    </form>
-
-    <div class="container" id="computer-details">
-
-        <table  id="parts-list" border="1">
-            <thead>
-                <tr class="font-monospace">
-                    <th>
-                        item
-                    </th>
-                    <th>
-                        Brand
-                    </th>
-                    <th>
-                        Model
-                    </th>
-                    <th>
-                        Price
-                    </th>
-                    <th>
-                        Id
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-              
-
-            </tbody>
-        </table>
-
-         <form id="parts-list-form">
-            <input type="text" name="item" id="item" placeholder="Item"> 
-            <br/>
-            <input type="text" name="brand" id="brand" placeholder="Brand">
-            <br/>
-            <input type="text" name="model" id="model" placeholder="Model">
-            <br/>
-            <input type="number" name="price" id="price" placeholder="Price">
-            <br/>
-            <input type="hidden" id="computerId" >
-            <input type="hidden" id="partId">
-            <button onclick="addPart();">Add</button> 
-            <button onclick="updatePart();">Update</button>
-            <button onclick="deletePart();">Delete</button>
-            
-        </form> 
-      
-        
-    </div>
-
-    
-
-
-    
-</body> 
-    
-    <script src ="src/index.js"></script>
-    <script src = "src/computer.js"></script>
-    <script src = "src/part.js"></script>
 </html>
