@@ -1,6 +1,9 @@
 
 let newPartForm = document.getElementById("parts-list-form")
 let rIndex, table = document.getElementById("parts-list")
+let addAction = document.getElementById("add")
+let updateAction = document.getElementById("update")
+let deleteAction = document.getElementById("delete")
 let tr = document.getElementById("tr")
 
 class Part {
@@ -12,17 +15,28 @@ class Part {
         this.price = data.price
         this.computer_id = data.computer_id
     }
+
 }
 
 
-newPartForm.addEventListener("submit", function(event){
+
+addAction.addEventListener("click", function(event){
     event.preventDefault()
-    document.getElementById("item").value = ""
-    document.getElementById("brand").value = ""
-    document.getElementById("model").value = ""
-    document.getElementById("price").value = ""
+    addPart(event.target)
+    clearPartsForm()
 })
 
+updateAction.addEventListener("click", function(event){
+    event.preventDefault()
+    updatePart(event.target)
+    clearPartsForm()
+})
+
+deleteAction.addEventListener("click", function(event){
+    event.preventDefault()
+    deletePart(event.target)
+    clearPartsForm()
+})
 
 
 
@@ -33,7 +47,7 @@ function addPart(){
         model = document.getElementById("model").value,
         price = document.getElementById("price").value,
         computer_id = document.getElementById("computerId").value;
-    let part = new Part( {
+    let part = new Part ({
         item,
         brand,
         model,
@@ -41,6 +55,7 @@ function addPart(){
         computer_id
 
    })
+   
 
     fetch("http://localhost:3000/parts" , {
         method: "POST",
@@ -75,6 +90,7 @@ function renderParts(parts){
         renderPart(element)
         selectedRowToInput()
         
+        
     });
     
 }
@@ -103,42 +119,40 @@ function renderPart(part){
     modelCell.innerHTML = part.model
     priceCell.innerHTML = part.price
     idCell.innerHTML = part.id
-
-    
-
-
     
 }
 
 function clearPartsHtml() {
     let partsIndex = document.querySelector("#parts-list>tbody")
-    console.log(partsIndex)
     partsIndex.innerHTML = ''
  }
 
-function selectedRowToInput()
-            {
-                
-                for(var i = 1; i < table.rows.length; i++)
-                {
-                    table.rows[i].onclick = function()
-                    {
-                     
-                      rIndex = this.rowIndex;
-                      console.log(rIndex)
-                      document.getElementById("item").value = this.cells[0].innerHTML;
-                      document.getElementById("brand").value = this.cells[1].innerHTML;
-                      document.getElementById("model").value = this.cells[2].innerHTML;
-                      document.getElementById("price").value = this.cells[3].innerHTML;
-                      document.getElementById("partId").value = this.cells[4].innerHTML;
-                    };
-                }
-            }
-            selectedRowToInput();
+ function clearPartsForm() {
+    document.getElementById("item").value = ""
+    document.getElementById("brand").value = ""
+    document.getElementById("model").value = ""
+    document.getElementById("price").value = ""
+ }
 
-    function updatePart()
-        {
-         var item = document.getElementById("item").value,
+function selectedRowToInput() {
+                
+    for(var i = 1; i < table.rows.length; i++)
+                {
+        table.rows[i].onclick = function()
+            {
+                rIndex = this.rowIndex;
+                document.getElementById("item").value = this.cells[0].innerHTML;
+                document.getElementById("brand").value = this.cells[1].innerHTML;
+                document.getElementById("model").value = this.cells[2].innerHTML;
+                document.getElementById("price").value = this.cells[3].innerHTML;
+                document.getElementById("partId").value = this.cells[4].innerHTML;
+                };
+            }
+}
+            
+
+    function updatePart() {
+         let item = document.getElementById("item").value,
              brand = document.getElementById("brand").value,
              model = document.getElementById("model").value,
              price = document.getElementById("price").value,
@@ -168,35 +182,12 @@ function selectedRowToInput()
 
 }
 
+
+
             
         
             
-            // function checkEmptyInput()
-            // {
-            //     var isEmpty = false,
-            //         item = document.getElementById("item").value,
-            //         brand = document.getElementById("brand").value,
-            //         model = document.getElementById("model").value,
-            //         price = document.getElementById("price").value;
-            
-            //     if(item === ""){
-            //         alert("Item Can not Be Empty");
-            //         isEmpty = true;
-            //     }
-            //     else if(brand === ""){
-            //         alert("Brand Can not Be Empty");
-            //         isEmpty = true;
-            //     }
-            //     else if(model === ""){
-            //         alert("Model Can not Be Empty");
-            //         isEmpty = true;
-            //     }
-            //     else if(price === ""){
-            //         alert("Price can not be empty");
-            //         isEmpty = true;
-            //     }
-            //     return isEmpty;
-            // }
+        
 
 
 

@@ -5,20 +5,9 @@ application up and running.
 
 Things you may want to cover:
 
-* Ruby version
+Ruby version - ruby '2.6.1'
 
-* System dependencies
+To clone repository head to https://github.com/guerino789/javaScriptProject
+copy and past SSH key into terminal cd into javaScriptProject open folder, cd into backend run rails db:migrate to create database. To start rails server run rails s in terminal and the applitcation will be up and running.
 
-* Configuration
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
